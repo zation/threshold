@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name logicMonitorApp.controller:MainCtrl
+ * @name logicMonitorApp.controller:AboutCtrl
  * @description
- * # MainCtrl
+ * # AboutCtrl
  * Controller of the logicMonitorApp
  */
 angular.module('logicMonitorApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('ThresholdCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
