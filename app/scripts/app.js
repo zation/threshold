@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name logicMonitorApp
- * @description
- * # logicMonitorApp
- *
- * Main module of the application.
- */
 angular
   .module('logicMonitorApp', [
     'ngAnimate',
