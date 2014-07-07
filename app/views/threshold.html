@@ -17,60 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="add-new-threshold lm-threshold-editor"
-        data-on-complete="onAddComplete">
-      <td colspan="4"
-          ng-click="activate();"
-          ng-show="!active">
-        <i>
-          add a new threshold (+)
-        </i>
-      </td>
-      <td colspan="{{!from ? 2 : 1}}"
-          ng-show="active">
-        <select ng-options="time for time in times"
-                ng-model="from">
-          <option value="">All Day</option>
-        </select>
-      </td>
-      <td ng-show="active && from">
-        <select ng-options="time for time in times"
-                ng-model="until">
-          <option value="">All Day</option>
-        </select>
-      </td>
-      <td ng-show="active">
-        when the <b>ErrorSystem</b>
-        <select ng-options="comparison as comparison.name for comparison in comparisons"
-                ng-model="comparison">
-        </select>
-      </td>
-      <td class="alerts" ng-show="active">
-        <div>
-          <input type="text"
-                 ng-model="numberForWarning"/>
-          trigger a warning
-        </div>
-        <div>
-          <input type="text"
-                 ng-model="numberForError"/>
-          trigger an error
-        </div>
-        <div>
-          <input type="text"
-                 ng-model="numberForCritical"/>
-          trigger a critical
-        </div>
-        <div class="operations">
-          <div class="operation" ng-click="submit()">
-            <span class="glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="operation" ng-click="cancel()">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-      </td>
-    </tr>
+    <tr class="add-new-threshold lm-threshold-editor"></tr>
     <tr>
       <td>
         09:00

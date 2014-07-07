@@ -4,9 +4,11 @@ angular.module('logicMonitorApp')
   .directive('lmThresholdEditor', function() {
     return {
       restrict: 'EC',
-//      scope: {
-//        'onComplete': '='
-//      },
+      templateUrl: 'views/thresholdEditor.html',
+      replace: true,
+      scope: {
+        'onComplete': '&'
+      },
       controller: ['$scope', function($scope) {
         $scope.active = false;
         $scope.activate = function() {
