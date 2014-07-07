@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('logicMonitorApp')
-  .controller('ThresholdCtrl', function ($scope) {
-    $scope.onComplete = function(threshold) {
-      console.log(threshold);
-    };
-  });
+  .controller('ThresholdCtrl', ['$scope', 'Thresholds',
+    function($scope, Thresholds) {
+      $scope.thresholds = Thresholds.getInstance();
+      $scope.onAddComplete = function(threshold) {
+        $scope.thresholds.add(threshold);
+      };
+    }]);

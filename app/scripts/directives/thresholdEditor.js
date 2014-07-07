@@ -7,7 +7,7 @@ angular.module('logicMonitorApp')
       templateUrl: 'views/thresholdEditor.html',
       replace: true,
       scope: {
-        'onComplete': '&'
+        'onComplete': '='
       },
       controller: ['$scope', function($scope) {
         $scope.active = false;
@@ -21,11 +21,12 @@ angular.module('logicMonitorApp')
           $scope.onComplete({
             from: $scope.from,
             until: $scope.until,
-            comparison: $scope.comparison.operator,
+            comparison: $scope.comparison,
             numberForWarning: $scope.numberForWarning,
             numberForError: $scope.numberForError,
             numberForCritical: $scope.numberForCritical
           });
+          $scope.active = false;
         };
 
         $scope.times = [];
