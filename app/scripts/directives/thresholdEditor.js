@@ -6,22 +6,22 @@ angular.module('logicMonitorApp')
       restrict: 'EA',
       templateUrl: 'views/thresholdEditor.html',
       replace: true,
-      scope: {
-        'onSave': '=',
-        'onRemove': '=',
-        'threshold': '='
-      },
       controller: ['$scope', 'Thresholds', function($scope, Thresholds) {
+        function initNewThreshold() {
+          $scope.newThreshold = {
+            id: 'new',
+            until: $scope.times[0],
+            operator: $scope.comparisons[0].operator
+          };
+        }
+
         $scope.times = Thresholds.TIMES;
         $scope.comparisons = Thresholds.COMPARISONS;
 
         $scope.isAdding = $scope.threshold === undefined;
         $scope.isEditing = !$scope.isAdding;
         if ($scope.isAdding) {
-          $scope.newThreshold = {
-            until: $scope.times[0],
-            operator: $scope.comparisons[0].operator
-          };
+          initNewThreshold();
         } else {
           $scope.newThreshold = angular.copy($scope.threshold);
         }
@@ -29,10 +29,7 @@ angular.module('logicMonitorApp')
         $scope.activate = function() {
           $scope.active = true;
           if ($scope.isAdding) {
-            $scope.newThreshold = {
-              until: $scope.times[0],
-              operator: $scope.comparisons[0].operator
-            };
+            initNewThreshold();
           }
         };
         $scope.remove = function($event) {
@@ -53,11 +50,17 @@ angular.module('logicMonitorApp')
           $scope.active = false;
 
           if ($scope.isAdding) {
+            delete $scope.newThreshold.id;
             $scope.onSave($scope.newThreshold);
           } else if ($scope.isEditing) {
             $scope.threshold = $scope.newThreshold;
           }
         };
-      }]
+      }],
+      scope: {
+        'onSave': '=',
+        'onRemove': '=',
+        'threshold': '='
+      }
     };
   });

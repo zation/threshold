@@ -13,3 +13,7 @@ select:focus {
   outline: 1px #CCC solid;
   border-bottom-color: transparent;
 }
+
+label {
+  cursor: pointer;
+}
