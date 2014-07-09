@@ -28,7 +28,7 @@
 
   </td>
   <td class="alerts">
-    <div ng-hide="isEditing && !active && !newThreshold.numberForWarning">
+    <div class="alert-level" ng-hide="isEditing && !active && !newThreshold.numberForWarning">
       <input type="number"
              id="{{newThreshold.id}}-warning"
              ng-model="newThreshold.numberForWarning"/>
@@ -36,7 +36,7 @@
         trigger a warning
       </label>
     </div>
-    <div ng-hide="isEditing && !active && !newThreshold.numberForError">
+    <div class="alert-level" ng-hide="isEditing && !active && !newThreshold.numberForError">
       <input type="number"
              id="{{newThreshold.id}}-error"
              ng-model="newThreshold.numberForError"/>
@@ -44,7 +44,7 @@
         trigger an error
       </label>
     </div>
-    <div ng-hide="isEditing && !active && !newThreshold.numberForCritical">
+    <div class="alert-level" ng-hide="isEditing && !active && !newThreshold.numberForCritical">
       <input type="number"
              id="{{newThreshold.id}}-critical"
              ng-model="newThreshold.numberForCritical"/>

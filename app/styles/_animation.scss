@@ -1,0 +1,22 @@
+.alert-level {
+  &.ng-hide-add {
+    opacity: 0;
+  }
+
+  &.ng-hide-remove {
+    opacity: 1;
+  }
+
+  &.ng-hide-remove,
+  &.ng-hide-add {
+    transition: height .3s linear, opacity .15s linear .15s;
+    height: 35px;
+    display: block !important;
+  }
+
+  &.ng-hide {
+    height: 0;
+    opacity: 0;
+  }
+
+}
