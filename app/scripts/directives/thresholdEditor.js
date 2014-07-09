@@ -3,7 +3,7 @@
 angular.module('logicMonitorApp')
   .directive('lmThresholdEditor', function() {
     return {
-      restrict: 'EC',
+      restrict: 'EA',
       templateUrl: 'views/thresholdEditor.html',
       replace: true,
       scope: {

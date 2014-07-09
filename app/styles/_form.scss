@@ -1,0 +1,15 @@
+input,
+select {
+  border: none;
+  padding: 4px;
+  border-radius: 2px;
+  border-bottom: 1px dotted #AAA;
+  margin: 3px;
+  background: white;
+}
+
+input:focus,
+select:focus {
+  outline: 1px #CCC solid;
+  border-bottom-color: transparent;
+}

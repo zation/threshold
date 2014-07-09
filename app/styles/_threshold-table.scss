@@ -31,15 +31,28 @@
   tbody {
     vertical-align: top;
 
-    tr:nth-child(odd) {
-      background: #EFEFEF;
+    tr {
+      cursor: pointer;
     }
 
-    tr.add-new-threshold {
-      background: #D6EFF5;
+    .time-selector {
+      width: 100%;
+    }
+
+    tr:nth-child(odd) {
+      background: #EFEFEF;
+
+      input,
+      select {
+        background: #EFEFEF;
+      }
+    }
+
+    tr.is-adding {
+      background: $blue;
       border: 1px solid #CCCCCC;
 
-      &.is-adding.is-active td {
+      &.is-active td {
         display: table-cell;
 
         &:first-child {
@@ -47,7 +60,7 @@
         }
       }
 
-      &.is-adding td {
+      td {
         display: none;
 
         &:first-child {
@@ -58,17 +71,21 @@
       i {
         color: #AAAAAA;
       }
-
-      &:hover {
-        border: 1px solid #CCCCCC;
-      }
     }
 
-    tr {
-      &:hover {
-        border-top: 2px solid #3BB7D8;
-        border-bottom: 2px solid #3BB7D8;
-        background: #D6EFF5;
+    tr.is-active {
+      border-top: 2px solid #3BB7D8;
+      border-bottom: 2px solid #3BB7D8;
+      background: $blue;
+
+      input,
+      select {
+        background: $blue;
+      }
+
+      input:focus,
+      select:focus {
+        background: white;
       }
     }
   }
