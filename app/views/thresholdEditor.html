@@ -1,36 +1,36 @@
 <tr ng-click="activate()">
-  <td colspan="{{!threshold.from ? 2 : 1}}">
+  <td colspan="{{!newThreshold.from ? 2 : 1}}">
     <select ng-options="time for time in times"
-            ng-model="threshold.from">
+            ng-model="newThreshold.from">
       <option value="">All Day</option>
     </select>
   </td>
-  <td ng-show="threshold.from">
+  <td ng-show="newThreshold.from">
     <select ng-options="time for time in times"
-            ng-model="threshold.until">
+            ng-model="newThreshold.until">
       <option value="">All Day</option>
     </select>
   </td>
   <td>
     when the <b>ErrorSystem</b>
     <select ng-options="comparison.operator as comparison.name for comparison in comparisons"
-            ng-model="threshold.operator">
+            ng-model="newThreshold.operator">
     </select>
   </td>
   <td class="alerts">
     <div>
       <input type="text"
-             ng-model="threshold.numberForWarning"/>
+             ng-model="newThreshold.numberForWarning"/>
       trigger a warning
     </div>
     <div>
       <input type="text"
-             ng-model="threshold.numberForError"/>
+             ng-model="newThreshold.numberForError"/>
       trigger an error
     </div>
     <div>
       <input type="text"
-             ng-model="threshold.numberForCritical"/>
+             ng-model="newThreshold.numberForCritical"/>
       trigger a critical
     </div>
     <div class="operations" ng-show="active">

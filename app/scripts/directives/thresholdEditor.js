@@ -41,15 +41,14 @@ angular.module('logicMonitorApp')
           }
         ];
 
-        var TYPE_ADD = 'TYPE_ADD', TYPE_EDIT = 'TYPE_EDIT', _type = TYPE_EDIT;
-        if ($scope.threshold === undefined) {
-          _type = TYPE_ADD;
-        }
-        if (_type === TYPE_ADD) {
+        var isAdding = $scope.threshold === undefined;
+        if (isAdding) {
           $scope.newThreshold = {
             until: $scope.times[0],
             operator: $scope.comparisons[0].operator
           };
+        } else {
+          $scope.newThreshold = angular.copy($scope.threshold);
         }
         $scope.active = false;
         $scope.activate = function() {
@@ -64,17 +63,20 @@ angular.module('logicMonitorApp')
         $scope.cancel = function($event) {
           $event.stopPropagation();
           $scope.active = false;
+          $scope.newThreshold = $scope.threshold;
         };
         $scope.submit = function($event) {
           $event.stopPropagation();
           $scope.active = false;
 
-          if (_type === TYPE_ADD) {
+          if (isAdding) {
             $scope.onSave($scope.newThreshold);
             $scope.newThreshold = {
               until: $scope.times[0],
               operator: $scope.comparisons[0].operator
             };
+          } else {
+            $scope.threshold = $scope.newThreshold;
           }
         };
       }]
