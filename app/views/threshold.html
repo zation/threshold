@@ -19,7 +19,7 @@
     <tbody>
     <tr class="add-new-threshold lm-threshold-editor"
         data-on-complete="onAddComplete"></tr>
-    <tr ng-repeat="threshold in thresholds.array">
+    <tr ng-repeat="threshold in thresholds.all()">
       <td ng-if="!threshold.from" colspan="2">
         All Day
       </td>
@@ -42,17 +42,17 @@
         <div ng-if="threshold.numberForCritical">
           {{threshold.numberForCritical}} trigger a critical
         </div>
-        <div class="operations">
-          <div class="operation">
-            <span class="glyphicon glyphicon-trash"></span>
-          </div>
-          <div class="operation">
-            <span class="glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="operation">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
+        <!--<div class="operations">-->
+          <!--<div class="operation">-->
+            <!--<span class="glyphicon glyphicon-trash"></span>-->
+          <!--</div>-->
+          <!--<div class="operation">-->
+            <!--<span class="glyphicon glyphicon-ok"></span>-->
+          <!--</div>-->
+          <!--<div class="operation">-->
+            <!--<span class="glyphicon glyphicon-remove"></span>-->
+          <!--</div>-->
+        <!--</div>-->
       </td>
     </tr>
     </tbody>
