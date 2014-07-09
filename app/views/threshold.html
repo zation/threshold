@@ -19,43 +19,10 @@
     <tbody>
     <tr class="add-new-threshold lm-threshold-editor"
         data-on-complete="onAddComplete"></tr>
-    <tr ng-repeat="threshold in thresholds.all()">
-      <td ng-if="!threshold.from" colspan="2">
-        All Day
-      </td>
-      <td ng-if="threshold.from">
-        {{threshold.from}}
-      </td>
-      <td ng-if="threshold.until">
-        {{threshold.until}}
-      </td>
-      <td>
-        {{threshold.comparison.name}}
-      </td>
-      <td class="alerts">
-        <div ng-if="threshold.numberForWarning">
-          {{threshold.numberForWarning}} trigger a warning
-        </div>
-        <div ng-if="threshold.numberForError">
-          {{threshold.numberForError}} trigger an error
-        </div>
-        <div ng-if="threshold.numberForCritical">
-          {{threshold.numberForCritical}} trigger a critical
-        </div>
-        <!--<div class="operations">-->
-          <!--<div class="operation">-->
-            <!--<span class="glyphicon glyphicon-trash"></span>-->
-          <!--</div>-->
-          <!--<div class="operation">-->
-            <!--<span class="glyphicon glyphicon-ok"></span>-->
-          <!--</div>-->
-          <!--<div class="operation">-->
-            <!--<span class="glyphicon glyphicon-remove"></span>-->
-          <!--</div>-->
-        <!--</div>-->
-      </td>
+    <tr class="lm-threshold-editor"
+        ng-repeat="threshold in thresholds.all()"
+        data-threshold="threshold">
     </tr>
     </tbody>
-
   </table>
 </div>

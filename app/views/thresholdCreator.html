@@ -1,44 +1,49 @@
-<tr ng-click="activate()">
-  <td colspan="{{!from ? 2 : 1}}">
+<tr ng-click="activate();">
+  <td colspan="4"
+      ng-show="!active">
+    <i>
+      add a new threshold (+)
+    </i>
+  </td>
+  <td colspan="{{!from ? 2 : 1}}"
+      ng-show="active">
     <select ng-options="time for time in times"
-            ng-model="threshold.from">
+            ng-model="from">
       <option value="">All Day</option>
     </select>
   </td>
-  <td ng-show="from">
+  <td ng-show="active && from">
     <select ng-options="time for time in times"
-            ng-model="threshold.until">
+            ng-model="until">
       <option value="">All Day</option>
     </select>
   </td>
-  <td>
+  <td ng-show="active">
     when the <b>ErrorSystem</b>
     <select ng-options="comparison.operator as comparison.name for comparison in comparisons"
-            ng-model="threshold.operator">
+            ng-model="operator">
     </select>
   </td>
-  <td class="alerts">
+  <td class="alerts"
+      ng-show="active">
     <div>
       <input type="text"
-             ng-model="threshold.numberForWarning"/>
+             ng-model="numberForWarning"/>
       trigger a warning
     </div>
     <div>
       <input type="text"
-             ng-model="threshold.numberForError"/>
+             ng-model="numberForError"/>
       trigger an error
     </div>
     <div>
       <input type="text"
-             ng-model="threshold.numberForCritical"/>
+             ng-model="numberForCritical"/>
       trigger a critical
     </div>
-    <div class="operations" ng-show="active">
+    <div class="operations">
       <div class="operation" ng-click="submit($event)">
         <span class="glyphicon glyphicon-ok"></span>
-      </div>
-      <div class="operation" ng-click="remove($event)">
-        <span class="glyphicon glyphicon-trash"></span>
       </div>
       <div class="operation" ng-click="cancel($event)">
         <span class="glyphicon glyphicon-remove"></span>

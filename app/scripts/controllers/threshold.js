@@ -7,10 +7,7 @@ angular.module('logicMonitorApp')
       $scope.thresholds.add({
         from: '123',
         until: '123',
-        comparison: {
-          name: 'is greater than(>)',
-          operator: '>'
-        },
+        operator: '>',
         numberForWarning: 11,
         numberForError: 22,
         numberForCritical: 0
@@ -18,10 +15,7 @@ angular.module('logicMonitorApp')
       $scope.thresholds.add({
         from: '123',
         until: '123',
-        comparison: {
-          name: 'is greater than(>)',
-          operator: '>'
-        },
+        operator: '=',
         numberForWarning: 11,
         numberForError: 22,
         numberForCritical: 0
@@ -29,10 +23,7 @@ angular.module('logicMonitorApp')
       $scope.thresholds.add({
         from: '123',
         until: '123',
-        comparison: {
-          name: 'is greater than(>)',
-          operator: '>'
-        },
+        operator: '<',
         numberForWarning: 11,
         numberForError: 22,
         numberForCritical: 0
