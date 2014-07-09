@@ -1,4 +1,4 @@
-<tr ng-click="activate()">
+<tr ng-click="activate()" ng-class="{'is-active': active}">
   <td colspan="{{!newThreshold.from ? 2 : 1}}">
     <select ng-options="time for time in times"
             ng-model="newThreshold.from">
