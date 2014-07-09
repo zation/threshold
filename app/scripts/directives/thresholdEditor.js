@@ -6,6 +6,14 @@ angular.module('logicMonitorApp')
       restrict: 'EA',
       templateUrl: 'views/thresholdEditor.html',
       replace: true,
+      link: function(scope, element) {
+        angular.element(element).on('click', function(event) {
+          var ignoreNodeNames = ['INPUT', 'LABEL', 'SELECT'];
+          if (ignoreNodeNames.indexOf(event.target.nodeName) < 0) {
+            angular.element(element).find('.from').focus();
+          }
+        });
+      },
       controller: ['$scope', 'Thresholds', function($scope, Thresholds) {
         function initNewThreshold() {
           $scope.newThreshold = {
