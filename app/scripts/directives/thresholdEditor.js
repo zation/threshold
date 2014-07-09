@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('logicMonitorApp')
-  .directive('lmThresholdEditor', function() {
+  .directive('lmThresholdEditor', ['$document', function($document) {
     return {
       restrict: 'EA',
       templateUrl: 'views/thresholdEditor.html',
@@ -13,9 +13,25 @@ angular.module('logicMonitorApp')
       },
       link: function(scope, element) {
         angular.element(element).on('click', function(event) {
+          event.stopPropagation();
           var ignoreNodeNames = ['INPUT', 'LABEL', 'SELECT'];
           if (ignoreNodeNames.indexOf(event.target.nodeName) < 0) {
             angular.element(element).find('.from').focus();
+          }
+        });
+
+        $document.on('click', function() {
+          scope.$apply(function() {
+            scope.active = false;
+          });
+        });
+
+        $document.on('keyup', function(event) {
+          if (event.keyCode === 27) {
+            angular.element(element).find('input, select').blur();
+            scope.$apply(function() {
+              scope.active = false;
+            });
           }
         });
       },
@@ -39,16 +55,27 @@ angular.module('logicMonitorApp')
         } else {
           $scope.newThreshold = angular.copy($scope.threshold);
         }
+
         $scope.active = false;
+
         $scope.activate = function() {
           $scope.active = true;
+          $scope.$emit('activate', $scope.newThreshold.id);
         };
+
+        $scope.$on('deactivate', function(event, exclusionId) {
+          if (exclusionId !== $scope.newThreshold.id) {
+            $scope.active = false;
+          }
+        });
+
         $scope.remove = function($event) {
           $event.stopPropagation();
           if ($scope.onRemove) {
             $scope.onRemove($scope.threshold);
           }
         };
+
         $scope.cancel = function($event) {
           $event.stopPropagation();
           $scope.active = false;
@@ -58,6 +85,7 @@ angular.module('logicMonitorApp')
             $scope.newThreshold = $scope.threshold;
           }
         };
+
         $scope.submit = function($event) {
           $event.stopPropagation();
           $scope.active = false;
@@ -72,4 +100,4 @@ angular.module('logicMonitorApp')
         };
       }]
     };
-  });
+  }]);

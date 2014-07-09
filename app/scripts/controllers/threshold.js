@@ -29,6 +29,10 @@ angular.module('logicMonitorApp')
         numberForCritical: 0
       });
 
+      $scope.$on('activate', function(event, id) {
+        $scope.$broadcast('deactivate', id);
+      });
+
       $scope.onAdd = function(threshold) {
         $scope.thresholds.add(threshold);
       };
