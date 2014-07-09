@@ -18,5 +18,16 @@
     height: 0;
     opacity: 0;
   }
-
 }
+
+.is-adding {
+  &.is-active-remove {
+    transition: height .3s linear;
+    height: 33px;
+  }
+
+  &.is-active {
+    height: 119px;
+  }
+}
+

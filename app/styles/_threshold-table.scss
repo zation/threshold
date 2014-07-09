@@ -1,5 +1,6 @@
 .threshold-table {
   width: 100%;
+  border: 1px dotted #CCCCCC;
 
   .operations {
     position: absolute;
@@ -75,7 +76,8 @@
 
     tr.is-adding {
       background: $blue;
-      border: 1px solid #CCCCCC;
+      border-top: 1px dotted #CCCCCC;
+      border-bottom: 1px dotted #CCCCCC;
 
       &.is-active td {
         display: table-cell;
