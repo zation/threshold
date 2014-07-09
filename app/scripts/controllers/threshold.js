@@ -8,7 +8,7 @@ angular.module('logicMonitorApp')
         from: '',
         until: '',
         operator: '>',
-        numberForWarning: 11,
+        numberForWarning: '',
         numberForError: 22,
         numberForCritical: 0
       });
@@ -17,7 +17,7 @@ angular.module('logicMonitorApp')
         until: '01:30',
         operator: '=',
         numberForWarning: 11,
-        numberForError: 22,
+        numberForError: '',
         numberForCritical: 0
       });
       $scope.thresholds.add({
@@ -25,7 +25,7 @@ angular.module('logicMonitorApp')
         until: '04:30',
         operator: '<',
         numberForWarning: 11,
-        numberForError: 22,
+        numberForError: 12312,
         numberForCritical: 0
       });
 

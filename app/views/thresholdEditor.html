@@ -28,24 +28,24 @@
 
   </td>
   <td class="alerts">
-    <div>
-      <input type="text"
+    <div ng-hide="isEditing && !active && !newThreshold.numberForWarning">
+      <input type="number"
              id="{{newThreshold.id}}-warning"
              ng-model="newThreshold.numberForWarning"/>
       <label for="{{newThreshold.id}}-warning" class="warning">
         trigger a warning
       </label>
     </div>
-    <div>
-      <input type="text"
+    <div ng-hide="isEditing && !active && !newThreshold.numberForError">
+      <input type="number"
              id="{{newThreshold.id}}-error"
              ng-model="newThreshold.numberForError"/>
       <label for="{{newThreshold.id}}-error" class="error">
         trigger an error
       </label>
     </div>
-    <div>
-      <input type="text"
+    <div ng-hide="isEditing && !active && !newThreshold.numberForCritical">
+      <input type="number"
              id="{{newThreshold.id}}-critical"
              ng-model="newThreshold.numberForCritical"/>
       <label for="{{newThreshold.id}}-critical" class="critical">

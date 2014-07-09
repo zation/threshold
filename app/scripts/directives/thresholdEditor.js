@@ -6,6 +6,11 @@ angular.module('logicMonitorApp')
       restrict: 'EA',
       templateUrl: 'views/thresholdEditor.html',
       replace: true,
+      scope: {
+        'onSave': '=',
+        'onRemove': '=',
+        'threshold': '='
+      },
       link: function(scope, element) {
         angular.element(element).on('click', function(event) {
           var ignoreNodeNames = ['INPUT', 'LABEL', 'SELECT'];
@@ -37,9 +42,6 @@ angular.module('logicMonitorApp')
         $scope.active = false;
         $scope.activate = function() {
           $scope.active = true;
-          if ($scope.isAdding) {
-            initNewThreshold();
-          }
         };
         $scope.remove = function($event) {
           $event.stopPropagation();
@@ -50,7 +52,9 @@ angular.module('logicMonitorApp')
         $scope.cancel = function($event) {
           $event.stopPropagation();
           $scope.active = false;
-          if ($scope.isEditing) {
+          if ($scope.isAdding) {
+            initNewThreshold();
+          } else {
             $scope.newThreshold = $scope.threshold;
           }
         };
@@ -61,15 +65,11 @@ angular.module('logicMonitorApp')
           if ($scope.isAdding) {
             delete $scope.newThreshold.id;
             $scope.onSave($scope.newThreshold);
+            initNewThreshold();
           } else if ($scope.isEditing) {
             $scope.threshold = $scope.newThreshold;
           }
         };
-      }],
-      scope: {
-        'onSave': '=',
-        'onRemove': '=',
-        'threshold': '='
-      }
+      }]
     };
   });
