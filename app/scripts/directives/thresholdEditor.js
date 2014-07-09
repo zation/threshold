@@ -20,17 +20,19 @@ angular.module('logicMonitorApp')
           }
         });
 
-        $document.on('click', function() {
-          scope.$apply(function() {
-            scope.active = false;
-          });
+        $document.on('click', function(event) {
+          if (scope.active) {
+            scope.$apply(function() {
+              scope.cancel(event);
+            });
+          }
         });
 
         $document.on('keyup', function(event) {
           if (event.keyCode === 27) {
             angular.element(element).find('input, select').blur();
             scope.$apply(function() {
-              scope.active = false;
+              scope.cancel(event);
             });
           }
         });
@@ -82,7 +84,7 @@ angular.module('logicMonitorApp')
           if ($scope.isAdding) {
             initNewThreshold();
           } else {
-            $scope.newThreshold = $scope.threshold;
+            $scope.newThreshold = angular.copy($scope.threshold);
           }
         };
 
@@ -95,7 +97,7 @@ angular.module('logicMonitorApp')
             $scope.onSave($scope.newThreshold);
             initNewThreshold();
           } else if ($scope.isEditing) {
-            $scope.threshold = $scope.newThreshold;
+            $scope.threshold = angular.copy($scope.newThreshold);
           }
         };
       }]
