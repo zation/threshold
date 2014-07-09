@@ -44,9 +44,10 @@
     .critical {
       padding: 3px;
       border-radius: 2px;
-      width: 120px;
+      width: 140px;
       display: inline-block;
       text-align: center;
+      font-family: 'MuseoSans500';
     }
 
     .warning {
@@ -117,7 +118,7 @@
   thead th {
     color: $gray;
     font-weight: normal;
-    font-size: $font-size-small;
+    @extend .important-text;
   }
 
   thead,

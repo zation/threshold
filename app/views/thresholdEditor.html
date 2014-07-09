@@ -19,10 +19,13 @@
     </select>
   </td>
   <td>
-    when the <b>ErrorSystem</b>
-    <select ng-options="comparison.operator as comparison.name for comparison in comparisons"
-            ng-model="newThreshold.operator">
-    </select>
+    <div>
+      when the <span class="alert-text">ErrorSystem</span>
+      <select ng-options="comparison.operator as comparison.name for comparison in comparisons"
+              ng-model="newThreshold.operator">
+      </select>
+    </div>
+
   </td>
   <td class="alerts">
     <div>
