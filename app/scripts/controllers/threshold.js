@@ -29,7 +29,11 @@ angular.module('logicMonitorApp')
         numberForCritical: 0
       });
 
-      $scope.onAddComplete = function(threshold) {
+      $scope.onAdd = function(threshold) {
         $scope.thresholds.add(threshold);
+      };
+
+      $scope.onRemove = function(threshold) {
+        $scope.thresholds.remove(threshold);
       };
     }]);

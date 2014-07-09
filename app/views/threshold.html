@@ -18,8 +18,9 @@
     </thead>
     <tbody>
     <tr class="add-new-threshold lm-threshold-editor"
-        data-on-complete="onAddComplete"></tr>
+        data-on-save="onAdd"></tr>
     <tr class="lm-threshold-editor"
+        data-on-remove="onRemove"
         ng-repeat="threshold in thresholds.all()"
         data-threshold="threshold">
     </tr>

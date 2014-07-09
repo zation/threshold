@@ -12,7 +12,8 @@ angular.module('logicMonitorApp')
       },
       replace: true,
       scope: {
-        'onComplete': '=',
+        'onSave': '=',
+        'onRemove': '=',
         'threshold': '='
       },
       controller: ['$scope', function($scope) {
@@ -22,6 +23,9 @@ angular.module('logicMonitorApp')
         };
         $scope.remove = function($event) {
           $event.stopPropagation();
+          if ($scope.onRemove) {
+            $scope.onRemove($scope.threshold);
+          }
         };
         $scope.cancel = function($event) {
           $event.stopPropagation();
@@ -31,8 +35,8 @@ angular.module('logicMonitorApp')
           $event.stopPropagation();
           $scope.active = false;
 
-          if ($scope.onComplete) {
-            $scope.onComplete({
+          if ($scope.onSave) {
+            $scope.onSave({
               from: $scope.from,
               until: $scope.until,
               operator: $scope.operator,
