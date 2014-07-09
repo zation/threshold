@@ -21,7 +21,7 @@
         data-on-save="onAdd"></tr>
     <tr data-lm-threshold-editor
         data-on-remove="onRemove"
-        ng-repeat="threshold in thresholds.all()"
+        ng-repeat="threshold in thresholds.all() | orderBy: fromOrder "
         data-threshold="threshold">
     </tr>
     </tbody>

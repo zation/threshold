@@ -10,6 +10,7 @@ angular.module('logicMonitorApp')
         function initNewThreshold() {
           $scope.newThreshold = {
             id: 'new',
+            from: '',
             until: $scope.times[0],
             operator: $scope.comparisons[0].operator
           };

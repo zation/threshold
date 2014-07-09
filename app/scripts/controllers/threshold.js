@@ -36,4 +36,9 @@ angular.module('logicMonitorApp')
       $scope.onRemove = function(threshold) {
         $scope.thresholds.remove(threshold);
       };
+
+      $scope.fromOrder = function(threshold) {
+        var result = Number(threshold.from.replace(':', '.'));
+        return isNaN(result) ? 0 : result;
+      };
     }]);
