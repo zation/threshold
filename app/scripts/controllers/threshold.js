@@ -37,7 +37,7 @@ angular.module('logicMonitorApp')
         numberForError: 22,
         numberForCritical: 0
       });
-      
+
       $scope.onAddComplete = function(threshold) {
         $scope.thresholds.add(threshold);
       };

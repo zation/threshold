@@ -13,6 +13,9 @@ angular.module('logicMonitorApp')
         $scope.active = false;
         $scope.activate = function() {
           $scope.active = true;
+          $scope.comparison = $scope.comparisons[0];
+          $scope.from = $scope.until = $scope.numberForWarning =
+            $scope.numberForError = $scope.numberForCritical = undefined;
         };
         $scope.cancel = function() {
           $scope.active = false;
@@ -38,16 +41,20 @@ angular.module('logicMonitorApp')
           }
         }
 
-        $scope.comparisons = [{
-          name: 'is equal to (=)',
-          operator: '='
-        }, {
-          name: 'is greater than (>)',
-          operator: '>'
-        }, {
-          name: 'is less than (<)',
-          operator: '<'
-        }];
+        $scope.comparisons = [
+          {
+            name: 'is equal to (=)',
+            operator: '='
+          },
+          {
+            name: 'is greater than (>)',
+            operator: '>'
+          },
+          {
+            name: 'is less than (<)',
+            operator: '<'
+          }
+        ];
         $scope.comparison = $scope.comparisons[0];
 
       }]
