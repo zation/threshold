@@ -1,29 +1,50 @@
-<div>
-  <table class="threshold-table">
-    <thead>
-    <tr>
-      <th>
-        From
-      </th>
-      <th>
-        Until
-      </th>
-      <th>
-        Comparison
-      </th>
-      <th>
-        Alerts
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr data-lm-threshold-editor
-        data-on-save="onAdd"></tr>
-    <tr data-lm-threshold-editor
-        data-on-remove="onRemove"
-        ng-repeat="threshold in thresholds.all() | orderBy: fromOrder "
-        data-threshold="threshold">
-    </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-12">
+    <table class="threshold-table">
+      <thead>
+      <tr>
+        <th>
+          From
+        </th>
+        <th>
+          Until
+        </th>
+        <th>
+          Comparison
+        </th>
+        <th>
+          Alerts
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr data-lm-threshold-editor
+          data-on-save="onAdd"></tr>
+      <tr data-lm-threshold-editor
+          data-on-remove="onRemove"
+          ng-repeat="threshold in thresholds.all() | orderBy: fromOrder "
+          data-threshold="threshold">
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="time-chart-background">
+      <li>24:00</li>
+      <li>22:00</li>
+      <li>20:00</li>
+      <li>18:00</li>
+      <li>16:00</li>
+      <li>14:00</li>
+      <li>12:00</li>
+      <li>10:00</li>
+      <li>08:00</li>
+      <li>06:00</li>
+      <li>04:00</li>
+      <li>02:00</li>
+    </ul>
+  </div>
 </div>

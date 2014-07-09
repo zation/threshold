@@ -1,0 +1,15 @@
+.time-chart-background {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 50px;
+  min-width: 1170px;
+
+  li {
+    border-right: 1px solid #CCCCCC;
+    height: 97px;
+    width: 97px;
+    float: right;
+    text-align: right;
+    padding-right: 10px;
+  }
+}
