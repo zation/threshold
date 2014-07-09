@@ -4,12 +4,7 @@ angular.module('logicMonitorApp')
   .directive('lmThresholdEditor', function() {
     return {
       restrict: 'EC',
-      templateUrl: function(element, attributes) {
-        if (attributes.threshold === undefined) {
-          return 'views/thresholdCreator.html';
-        }
-        return 'views/thresholdEditor.html';
-      },
+      templateUrl: 'views/thresholdEditor.html',
       replace: true,
       scope: {
         'onSave': '=',
@@ -41,8 +36,9 @@ angular.module('logicMonitorApp')
           }
         ];
 
-        var isAdding = $scope.threshold === undefined;
-        if (isAdding) {
+        $scope.isAdding = $scope.threshold === undefined;
+        $scope.isEditing = !$scope.isAdding;
+        if ($scope.isAdding) {
           $scope.newThreshold = {
             until: $scope.times[0],
             operator: $scope.comparisons[0].operator
@@ -53,6 +49,12 @@ angular.module('logicMonitorApp')
         $scope.active = false;
         $scope.activate = function() {
           $scope.active = true;
+          if ($scope.isAdding) {
+            $scope.newThreshold = {
+              until: $scope.times[0],
+              operator: $scope.comparisons[0].operator
+            };
+          }
         };
         $scope.remove = function($event) {
           $event.stopPropagation();
@@ -63,19 +65,17 @@ angular.module('logicMonitorApp')
         $scope.cancel = function($event) {
           $event.stopPropagation();
           $scope.active = false;
-          $scope.newThreshold = $scope.threshold;
+          if ($scope.isEditing) {
+            $scope.newThreshold = $scope.threshold;
+          }
         };
         $scope.submit = function($event) {
           $event.stopPropagation();
           $scope.active = false;
 
-          if (isAdding) {
+          if ($scope.isAdding) {
             $scope.onSave($scope.newThreshold);
-            $scope.newThreshold = {
-              until: $scope.times[0],
-              operator: $scope.comparisons[0].operator
-            };
-          } else {
+          } else if ($scope.isEditing) {
             $scope.threshold = $scope.newThreshold;
           }
         };

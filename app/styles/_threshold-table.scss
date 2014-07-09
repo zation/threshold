@@ -39,17 +39,15 @@
       background: #D6EFF5;
       border: 1px solid #CCCCCC;
 
-      &.is-active {
-        td {
-          display: table-cell;
+      &.is-adding.is-active td {
+        display: table-cell;
 
-          &:first-child {
-            display: none;
-          }
+        &:first-child {
+          display: none;
         }
       }
 
-      td {
+      &.is-adding td {
         display: none;
 
         &:first-child {

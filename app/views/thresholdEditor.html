@@ -1,4 +1,9 @@
-<tr ng-click="activate()" ng-class="{'is-active': active}">
+<tr ng-click="activate();" ng-class="{'is-active': active, 'is-adding': isAdding}">
+  <td colspan="4" ng-if="isAdding">
+    <i>
+      add a new threshold (+)
+    </i>
+  </td>
   <td colspan="{{!newThreshold.from ? 2 : 1}}">
     <select ng-options="time for time in times"
             ng-model="newThreshold.from">
@@ -37,7 +42,7 @@
       <div class="operation" ng-click="submit($event)">
         <span class="glyphicon glyphicon-ok"></span>
       </div>
-      <div class="operation" ng-click="remove($event)">
+      <div ng-if="isEditing" class="operation" ng-click="remove($event)">
         <span class="glyphicon glyphicon-trash"></span>
       </div>
       <div class="operation" ng-click="cancel($event)">
