@@ -11,30 +11,9 @@ angular.module('logicMonitorApp')
         'onRemove': '=',
         'threshold': '='
       },
-      controller: ['$scope', function($scope) {
-        $scope.times = [];
-        for (var hour = 0; hour < 24; hour++) {
-          for (var minutes = 0; minutes < 60; minutes += 15) {
-            var hourString = hour < 10 ? '0' + hour : hour;
-            var minutesString = minutes < 10 ? '0' + minutes : minutes;
-            $scope.times.push(hourString + ':' + minutesString);
-          }
-        }
-
-        $scope.comparisons = [
-          {
-            name: 'is equal to (=)',
-            operator: '='
-          },
-          {
-            name: 'is greater than (>)',
-            operator: '>'
-          },
-          {
-            name: 'is less than (<)',
-            operator: '<'
-          }
-        ];
+      controller: ['$scope', 'Thresholds', function($scope, Thresholds) {
+        $scope.times = Thresholds.TIMES;
+        $scope.comparisons = Thresholds.COMPARISONS;
 
         $scope.isAdding = $scope.threshold === undefined;
         $scope.isEditing = !$scope.isAdding;
