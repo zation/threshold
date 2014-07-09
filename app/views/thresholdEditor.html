@@ -28,17 +28,23 @@
     <div>
       <input type="text"
              ng-model="newThreshold.numberForWarning"/>
-      trigger a warning
+      <span class="warning">
+        trigger a warning
+      </span>
     </div>
     <div>
       <input type="text"
              ng-model="newThreshold.numberForError"/>
-      trigger an error
+      <span class="error">
+        trigger an error
+      </span>
     </div>
     <div>
       <input type="text"
              ng-model="newThreshold.numberForCritical"/>
-      trigger a critical
+      <span class="critical">
+        trigger a critical
+      </span>
     </div>
     <div class="operations" ng-show="active">
       <div class="operation" ng-click="submit($event)">

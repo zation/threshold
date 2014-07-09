@@ -39,6 +39,30 @@
       width: 100%;
     }
 
+    .warning,
+    .error,
+    .critical {
+      padding: 3px;
+      border-radius: 2px;
+      width: 120px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .warning {
+      background: #FC0;
+    }
+
+    .error {
+      background: #F26522;
+      color: white;
+    }
+
+    .critical {
+      background: #ED1E24;
+      color: white;
+    }
+
     tr:nth-child(odd) {
       background: #EFEFEF;
 
