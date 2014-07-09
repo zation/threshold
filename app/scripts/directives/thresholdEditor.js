@@ -47,6 +47,7 @@ angular.module('logicMonitorApp')
         }
         if (_type === TYPE_ADD) {
           $scope.newThreshold = {
+            until: $scope.times[0],
             operator: $scope.comparisons[0].operator
           };
         }
@@ -71,6 +72,7 @@ angular.module('logicMonitorApp')
           if (_type === TYPE_ADD) {
             $scope.onSave($scope.newThreshold);
             $scope.newThreshold = {
+              until: $scope.times[0],
               operator: $scope.comparisons[0].operator
             };
           }

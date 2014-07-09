@@ -5,24 +5,24 @@ angular.module('logicMonitorApp')
     function($scope, Thresholds) {
       $scope.thresholds = Thresholds.getInstance();
       $scope.thresholds.add({
-        from: '123',
-        until: '123',
+        from: '',
+        until: '',
         operator: '>',
         numberForWarning: 11,
         numberForError: 22,
         numberForCritical: 0
       });
       $scope.thresholds.add({
-        from: '123',
-        until: '123',
+        from: '00:30',
+        until: '01:30',
         operator: '=',
         numberForWarning: 11,
         numberForError: 22,
         numberForCritical: 0
       });
       $scope.thresholds.add({
-        from: '123',
-        until: '123',
+        from: '03:30',
+        until: '04:30',
         operator: '<',
         numberForWarning: 11,
         numberForError: 22,

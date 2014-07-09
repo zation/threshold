@@ -5,7 +5,7 @@
       add a new threshold (+)
     </i>
   </td>
-  <td colspan="{{!from ? 2 : 1}}"
+  <td colspan="{{!newThreshold.from ? 2 : 1}}"
       ng-show="active">
     <select ng-options="time for time in times"
             ng-model="newThreshold.from">
@@ -15,7 +15,6 @@
   <td ng-show="active && newThreshold.from">
     <select ng-options="time for time in times"
             ng-model="newThreshold.until">
-      <option value="">All Day</option>
     </select>
   </td>
   <td ng-show="active">

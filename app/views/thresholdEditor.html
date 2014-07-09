@@ -1,11 +1,11 @@
 <tr ng-click="activate()">
-  <td colspan="{{!from ? 2 : 1}}">
+  <td colspan="{{!threshold.from ? 2 : 1}}">
     <select ng-options="time for time in times"
             ng-model="threshold.from">
       <option value="">All Day</option>
     </select>
   </td>
-  <td ng-show="from">
+  <td ng-show="threshold.from">
     <select ng-options="time for time in times"
             ng-model="threshold.until">
       <option value="">All Day</option>
