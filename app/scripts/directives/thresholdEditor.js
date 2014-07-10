@@ -37,69 +37,71 @@ angular.module('logicMonitorApp')
           }
         });
       },
-      controller: ['$scope', 'Thresholds', function($scope, Thresholds) {
-        function initNewThreshold() {
-          $scope.newThreshold = {
-            id: 'new',
-            from: '',
-            until: $scope.times[0],
-            operator: $scope.comparisons[0].operator
-          };
-        }
-
-        $scope.times = Thresholds.TIMES;
-        $scope.comparisons = Thresholds.COMPARISONS;
-
-        $scope.isAdding = $scope.threshold === undefined;
-        $scope.isEditing = !$scope.isAdding;
-        if ($scope.isAdding) {
-          initNewThreshold();
-        } else {
-          $scope.newThreshold = angular.copy($scope.threshold);
-        }
-
-        $scope.active = false;
-
-        $scope.activate = function() {
-          $scope.active = true;
-          $scope.$emit('activate', $scope.newThreshold.id);
-        };
-
-        $scope.$on('deactivate', function(event, exclusionId) {
-          if (exclusionId !== $scope.newThreshold.id) {
-            $scope.active = false;
+      controller: ['$scope', 'Thresholds', 'Threshold',
+        function($scope, Thresholds, Threshold) {
+          function initNewThreshold() {
+            $scope.newThreshold = new Threshold({
+              id: 'new',
+              from: '',
+              until: $scope.times[0],
+              operator: $scope.comparisons[0].operator
+            });
           }
-        });
 
-        $scope.remove = function($event) {
-          $event.stopPropagation();
-          if ($scope.onRemove) {
-            $scope.onRemove($scope.threshold);
-          }
-        };
+          $scope.times = Thresholds.TIMES;
+          $scope.comparisons = Thresholds.COMPARISONS;
 
-        $scope.cancel = function($event) {
-          $event.stopPropagation();
-          $scope.active = false;
+          $scope.isAdding = $scope.threshold === undefined;
+          $scope.isEditing = !$scope.isAdding;
           if ($scope.isAdding) {
             initNewThreshold();
           } else {
-            $scope.newThreshold = angular.copy($scope.threshold);
+            $scope.newThreshold = new Threshold();
+            $scope.threshold.copyDataTo($scope.newThreshold);
           }
-        };
 
-        $scope.submit = function($event) {
-          $event.stopPropagation();
           $scope.active = false;
 
-          if ($scope.isAdding) {
-            delete $scope.newThreshold.id;
-            $scope.onSave($scope.newThreshold);
-            initNewThreshold();
-          } else if ($scope.isEditing) {
-            $scope.threshold = angular.copy($scope.newThreshold);
-          }
-        };
-      }]
+          $scope.activate = function() {
+            $scope.active = true;
+            $scope.$emit('activate', $scope.newThreshold.id);
+          };
+
+          $scope.$on('deactivate', function(event, exclusionId) {
+            if (exclusionId !== $scope.newThreshold.id) {
+              $scope.active = false;
+            }
+          });
+
+          $scope.remove = function($event) {
+            $event.stopPropagation();
+            if ($scope.onRemove) {
+              $scope.onRemove($scope.threshold);
+            }
+          };
+
+          $scope.cancel = function($event) {
+            $event.stopPropagation();
+            $scope.active = false;
+            if ($scope.isAdding) {
+              initNewThreshold();
+            } else {
+              $scope.threshold.copyDataTo($scope.newThreshold);
+            }
+          };
+
+          $scope.submit = function($event) {
+            $event.stopPropagation();
+            $scope.active = false;
+
+            if ($scope.isAdding) {
+              delete $scope.newThreshold.id;
+              $scope.onSave($scope.newThreshold);
+              initNewThreshold();
+            } else if ($scope.isEditing) {
+              $scope.newThreshold.copyDataTo($scope.threshold);
+            }
+          };
+        }]
     };
   }]);
