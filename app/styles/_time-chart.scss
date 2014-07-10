@@ -2,7 +2,6 @@
   list-style: none;
   padding-left: 0;
   margin-top: 50px;
-  min-width: 1170px;
 
   li {
     border-right: 1px solid #CCCCCC;
@@ -16,6 +15,8 @@
 
 .time-chart {
   position: relative;
+  left: 4px;
+  width: 1166px;
 
   .all-day-background {
     position: absolute;

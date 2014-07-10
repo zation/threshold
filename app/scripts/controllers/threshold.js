@@ -13,6 +13,14 @@ angular.module('logicMonitorApp')
         numberForCritical: 0
       }));
       $scope.thresholds.addA(new Threshold({
+        from: '22:00',
+        until: '02:00',
+        operator: '>',
+        numberForWarning: '',
+        numberForError: 22,
+        numberForCritical: 0
+      }));
+      $scope.thresholds.addA(new Threshold({
         from: '00:30',
         until: '01:30',
         operator: '=',

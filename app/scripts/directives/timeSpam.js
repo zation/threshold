@@ -8,22 +8,34 @@ angular.module('logicMonitorApp')
       scope: {
         'threshold': '='
       },
-      replace: true,
       link: function(scope, element) {
 
-        if (!scope.threshold.isAllDay()) {
-          var maxWidth = 1170;
-          var from = Number(scope.threshold.from.replace(':', '.'));
-          var until = Number(scope.threshold.until.replace(':', '.'));
+        scope.$watchCollection('[threshold.from, threshold.until]', function() {
+          if (!scope.threshold.isAllDay()) {
+            var maxWidth = 1166;
+            var from = Number(scope.threshold.from.replace(':', '.'));
+            var until = Number(scope.threshold.until.replace(':', '.'));
+            var spams = angular.element(element).find('.spam');
+            scope.isCrossDay = from > until;
 
-          var start = from / 24 * maxWidth;
-          var width = (until - from) / 24 * maxWidth;
+            if (scope.isCrossDay) {
+              spams.eq(0).css({
+                left: 0,
+                width: until / 24 * maxWidth
+              });
+              spams.eq(1).css({
+                left: from / 24 * maxWidth,
+                right: 0
+              });
+            } else {
+              spams.css({
+                left: from / 24 * maxWidth,
+                width: (until - from) / 24 * maxWidth
+              });
+            }
+          }
+        });
 
-          angular.element(element).css({
-            left: start,
-            width: width
-          });
-        }
       }
     };
   });
