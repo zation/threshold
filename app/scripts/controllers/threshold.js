@@ -42,7 +42,9 @@ angular.module('logicMonitorApp')
       };
 
       $scope.fromOrder = function(threshold) {
-        var result = Number(threshold.from.replace(':', '.'));
-        return isNaN(result) ? 0 : result;
+        if (!threshold.from) {
+          return 24;
+        }
+        return Number(threshold.from.replace(':', '.'));
       };
     }]);
