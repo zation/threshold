@@ -40,6 +40,44 @@
       width: 100%;
     }
 
+    .color-marker {
+      position: relative;
+    }
+
+    .color-marker:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 1px;
+      left: 0;
+      bottom: 1px;
+      width: 10px;
+    }
+
+    .purple:before {
+      background: #5f2f69;
+    }
+
+    .light-blue:before {
+      background: #009edf;
+    }
+
+    .green:before {
+      background: #9cc416;
+    }
+
+    .blue:before {
+      background: #0049a0;
+    }
+
+    .magenta:before {
+      background: #9e156d;
+    }
+
+    .bright-green:before {
+      background: #10b50c;
+    }
+
     .warning,
     .error,
     .critical {

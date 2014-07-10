@@ -4,7 +4,8 @@
       add a new threshold (+)
     </i>
   </td>
-  <td colspan="{{!newThreshold.from ? 2 : 1}}">
+
+  <td colspan="{{!newThreshold.from ? 2 : 1}}" class="{{newThreshold.color}} color-marker">
     <select ng-options="time for time in times"
             class="time-selector from"
             ng-model="newThreshold.from">
