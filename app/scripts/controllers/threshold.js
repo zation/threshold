@@ -4,7 +4,7 @@ angular.module('logicMonitorApp')
   .controller('ThresholdCtrl', ['$scope', 'Thresholds', 'Threshold',
     function($scope, Thresholds, Threshold) {
       $scope.thresholds = Thresholds.getInstance();
-      $scope.thresholds.add(new Threshold({
+      $scope.thresholds.addA(new Threshold({
         from: '',
         until: '',
         operator: '>',
@@ -12,7 +12,7 @@ angular.module('logicMonitorApp')
         numberForError: 22,
         numberForCritical: 0
       }));
-      $scope.thresholds.add(new Threshold({
+      $scope.thresholds.addA(new Threshold({
         from: '00:30',
         until: '01:30',
         operator: '=',
@@ -20,7 +20,7 @@ angular.module('logicMonitorApp')
         numberForError: '',
         numberForCritical: 0
       }));
-      $scope.thresholds.add(new Threshold({
+      $scope.thresholds.addA(new Threshold({
         from: '03:30',
         until: '04:30',
         operator: '<',
@@ -34,7 +34,7 @@ angular.module('logicMonitorApp')
       });
 
       $scope.onAdd = function(threshold) {
-        $scope.thresholds.add(threshold);
+        $scope.thresholds.addA(threshold);
       };
 
       $scope.onRemove = function(threshold) {

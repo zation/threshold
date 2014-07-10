@@ -47,13 +47,9 @@
         <li>04:00</li>
         <li>02:00</li>
       </ul>
-      <div ng-repeat="threshold in thresholds.all() | orderBy: fromOrder"
-           ng-class="{'all-day': threshold.isAllDay(), 'spam': !threshold.isAllDay()}"
-        ></div>
-      <div class="all-day"></div>
-      <div class="spam purple" style="left: 10px; width: 100px;"></div>
-      <div class="spam light-blue" style="left: 30px; width: 100px;"></div>
-      <div class="spam blue" style="left: 230px; width: 290px;"></div>
+      <div class="all-day-background"></div>
+      <lm-time-spam ng-repeat="threshold in thresholds.all() | orderBy: fromOrder"
+           data-threshold="threshold"></lm-time-spam>
     </div>
   </div>
 </div>

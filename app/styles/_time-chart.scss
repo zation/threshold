@@ -17,19 +17,27 @@
 .time-chart {
   position: relative;
 
-  .all-day {
+  .all-day-background {
     position: absolute;
-    background: #CCC;
     height: 18px;
+    top: 45px;
+    background: #CCC;
     left: 0;
     right: 0;
-    top: 45px;
   }
 
   .spam {
     position: absolute;
     height: 30px;
     top: 39px;
+    z-index: 1;
+
+    &.all-day {
+      top: 45px;
+      height: 18px;
+      width: 100%;
+      z-index: 0;
+    }
   }
 
   .purple {

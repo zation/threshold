@@ -3,6 +3,7 @@
 angular.module('logicMonitorApp')
   .factory('Thresholds', ['$collection', function($collection) {
     var Thresholds = $collection;
+    var COLORS = ['purple', 'light-blue', 'green', 'blue', 'magenta'];
 
     Thresholds.TIMES = [];
     for (var hour = 0; hour < 24; hour++) {
@@ -27,6 +28,12 @@ angular.module('logicMonitorApp')
         operator: '<'
       }
     ];
+
+    Thresholds.prototype.addA = function(threshold) {
+      var index = this.array.length % COLORS.length;
+      threshold.color = COLORS[index];
+      this.add(threshold);
+    };
 
     return Thresholds;
   }]);
