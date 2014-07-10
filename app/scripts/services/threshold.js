@@ -11,6 +11,7 @@ angular.module('logicMonitorApp')
     };
 
     Threshold.prototype.copyDataTo = function(destination) {
+      destination.color = this.color;
       destination.from = this.from;
       destination.until = this.until;
       destination.operator = this.operator;
