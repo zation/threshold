@@ -38,8 +38,10 @@
       </tr>
       </thead>
       <tbody>
+      <!--This is a component to add threshold-->
       <tr data-lm-threshold-editor
           data-on-save="onAdd"></tr>
+      <!--This is a component to edit threshold-->
       <tr data-lm-threshold-editor
           data-on-remove="onRemove"
           ng-repeat="threshold in thresholds.all() | orderBy: fromOrder "
@@ -69,6 +71,7 @@
         <li>02:00</li>
       </ul>
       <div class="all-day-background"></div>
+      <!--This is the component to dynamically display time spam-->
       <lm-time-spam ng-repeat="threshold in thresholds.all() | orderBy: fromOrder"
                     data-index="$index"
                     data-threshold="threshold"></lm-time-spam>
