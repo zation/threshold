@@ -23,7 +23,7 @@ angular.module('logicMonitorApp')
       });
 
       $scope.onAdd = function(threshold) {
-        $scope.thresholds.addA(threshold);
+        $scope.thresholds.add(threshold);
       };
 
       $scope.onRemove = function(threshold) {

@@ -43,6 +43,7 @@
       <tr data-lm-threshold-editor
           data-on-remove="onRemove"
           ng-repeat="threshold in thresholds.all() | orderBy: fromOrder "
+          data-index="$index"
           data-threshold="threshold">
       </tr>
       </tbody>
@@ -69,6 +70,7 @@
       </ul>
       <div class="all-day-background"></div>
       <lm-time-spam ng-repeat="threshold in thresholds.all() | orderBy: fromOrder"
+                    data-index="$index"
                     data-threshold="threshold"></lm-time-spam>
     </div>
   </div>

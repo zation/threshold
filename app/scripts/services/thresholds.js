@@ -4,7 +4,11 @@ angular.module('logicMonitorApp')
   .factory('Thresholds', ['$collection', 'Threshold',
     function($collection, Threshold) {
       var Thresholds = $collection;
-      var COLORS = ['purple', 'light-blue', 'green', 'blue', 'magenta'];
+
+      Thresholds.getColor = function(index) {
+        var colors = ['purple', 'light-blue', 'green', 'blue', 'magenta'];
+        return colors[index % colors.length];
+      };
 
       Thresholds.TIMES = [];
       for (var hour = 0; hour < 24; hour++) {
@@ -70,7 +74,7 @@ angular.module('logicMonitorApp')
             numberArray[index] = alertNumber;
           });
 
-          thresholds.addA(new Threshold({
+          thresholds.add(new Threshold({
             from: from,
             until: until,
             operator: operatorAndAlertNumbers[0],
@@ -79,12 +83,6 @@ angular.module('logicMonitorApp')
             numberForCritical: numberArray[2]
           }));
         });
-      };
-
-      Thresholds.prototype.addA = function(threshold) {
-        var index = this.array.length % COLORS.length;
-        threshold.color = COLORS[index];
-        this.add(threshold);
       };
 
       return Thresholds;
