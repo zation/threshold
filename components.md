@@ -6,8 +6,8 @@ This is a component to display/add/edit/delete thredshold.
 
 ###### API
 
-* onSave: Must have when this component is used to add thredshold. A callback when the user saves the new thredshold during adding.
-* onRemove: Must have when this component is used to edit thredshold. A callback when the user removes the thredshold during editing.
+* onSave: Must have when this component is used to add thredshold. A callback when the user saves the new thredshold during adding. The new thredshold will be the parameter of the callback.
+* onRemove: Must have when this component is used to edit thredshold. A callback when the user removes the thredshold during editing. The thredshold instance to be removed will be the parameter of the callback.
 * threshold: Must have when this component is used to edit thredshold. The threshold instance which is edting by the user.
 * index: Must have both for editing and adding. The index of this component in the views maybe order by a special way, for example: from time, operator, warning number and so on.
 
