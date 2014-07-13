@@ -12,7 +12,7 @@ angular.module('logicMonitorApp')
       link: function(scope, element) {
 
         scope.$watchCollection('[threshold.from, threshold.until]', function() {
-          scope.color = Thresholds.getColor(scope.index);
+          scope.color = Thresholds.getColor(scope.index, scope.threshold.isAllDay());
 
           if (!scope.threshold.isAllDay()) {
             var maxWidth = 1166;

@@ -5,9 +5,10 @@ angular.module('logicMonitorApp')
     function($collection, Threshold) {
       var Thresholds = $collection;
 
-      Thresholds.getColor = function(index) {
-        var colors = ['purple', 'light-blue', 'green', 'blue', 'magenta'];
-        return colors[index % colors.length];
+      var COLORS = ['bright-green', 'light-blue', 'green', 'blue', 'magenta'];
+      var ALL_DAY_COLOR = 'purple';
+      Thresholds.getColor = function(index, isAllDay) {
+        return isAllDay ? ALL_DAY_COLOR : COLORS[index % COLORS.length];
       };
 
       Thresholds.TIMES = [];
