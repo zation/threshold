@@ -30,6 +30,10 @@ angular.module('logicMonitorApp')
         }
       ];
 
+      Thresholds.prototype.refreshWith = function(codes) {
+        this.removeAll().updateWith(codes);
+      };
+
       Thresholds.prototype.updateWith = function(codes) {
         var thresholds = this;
         angular.forEach(codes.split(','), function(code) {
