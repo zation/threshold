@@ -10,6 +10,14 @@ angular.module('logicMonitorApp')
         '(03:30 04:30) < 11 12 0';
       $scope.thresholds.updateWith($scope.codes);
 
+      $scope.$watch(function() {
+        return $scope.thresholds.toString();
+      }, function(codes) {
+        if (codes) {
+          $scope.codes = codes;
+        }
+      });
+
       $scope.$on('activate', function(event, id) {
         $scope.$broadcast('deactivate', id);
       });

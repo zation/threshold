@@ -30,26 +30,39 @@ angular.module('logicMonitorApp')
         }
       ];
 
+      Thresholds.prototype.toString = function() {
+        var strings = [];
+        angular.forEach(this.all(), function(threshold) {
+          var string = '(' + threshold.from + ' ' + threshold.until + ')' +
+            ' ' + threshold.operator +
+            ' ' + threshold.numberForWarning +
+            ' ' + threshold.numberForError +
+            ' ' + threshold.numberForCritical;
+          strings.push(string);
+        });
+        return strings.length > 0 ? strings.join(', ') : null;
+      };
+
       Thresholds.prototype.refreshWith = function(codes) {
         this.removeAll().updateWith(codes);
       };
 
       Thresholds.prototype.updateWith = function(codes) {
-        var thresholds = this;
+        var thresholds = this, from, until, numberArray, times;
         angular.forEach(codes.split(','), function(code) {
+          from = '';
+          until = '';
+          numberArray = [0, 0, 0];
           code = code.trim().split(')');
-          var times = code[0].substr(1).split(' ');
-          var from = '';
-          var until = '';
+          times = code[0].substr(1).split(' ');
+
           if (times.length > 1) {
             from = times[0];
             until = times[1];
           }
+
           var operatorAndAlertNumbers = code[1].trim().split(' ');
-          var operator = operatorAndAlertNumbers.shift();
-          var alertNumbers = operatorAndAlertNumbers;
-          var numberArray = [0, 0, 0]
-          angular.forEach(alertNumbers, function(alertNumber, index) {
+          angular.forEach(operatorAndAlertNumbers.slice(1), function(alertNumber, index) {
             alertNumber = Number(alertNumber);
             if (isNaN(alertNumber)) {
               return;
@@ -60,7 +73,7 @@ angular.module('logicMonitorApp')
           thresholds.addA(new Threshold({
             from: from,
             until: until,
-            operator: operator,
+            operator: operatorAndAlertNumbers[0],
             numberForWarning: numberArray[0],
             numberForError: numberArray[1],
             numberForCritical: numberArray[2]
