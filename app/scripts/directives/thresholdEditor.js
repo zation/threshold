@@ -9,7 +9,8 @@ angular.module('logicMonitorApp')
       scope: {
         'onSave': '=',
         'onRemove': '=',
-        'threshold': '='
+        'threshold': '=',
+        'index': '='
       },
       link: function(scope, element) {
         angular.element(element).on('click', function(event) {
@@ -56,6 +57,7 @@ angular.module('logicMonitorApp')
           if ($scope.isAdding) {
             initNewThreshold();
           } else {
+            $scope.color = Thresholds.getColor($scope.index, $scope.threshold.isAllDay());
             $scope.newThreshold = new Threshold();
             $scope.threshold.copyDataTo($scope.newThreshold);
           }
